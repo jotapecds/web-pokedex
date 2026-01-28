@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url = env("DATABASE_URL")
+
+}
+
+// --- Definição das Tabelas ---
+
+model Pokemon {
+  codigo                  Int    @id @default(autoincrement())
+  nome                    String
+  codigo_tipo_primario    Int
+  codigo_tipo_secundario  Int?
+
+  // -- Relacionamentos --
+  tipoPrimario            Tipo @relation("TipoPrimario", fields: [codigo_tipo_primario], references: [codigo])
+  tipoSecundario          Tipo? @relation("TipoSecundario", fields: [codigo_tipo_secundario], references: [codigo])
+}
+
+model Tipo {
+  codigo Int    @id @default(autoincrement())
+  nome   String
+
+  // -- Relacionamentos --
+  pokemonsPrimarios   Pokemon[] @relation("TipoPrimario")
+  pokemonsSecundarios Pokemon[] @relation("TipoSecundario")
+}
