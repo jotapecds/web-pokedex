@@ -185,6 +185,7 @@ npm run deploy
 # 🔴⚪ Web Pokedex
 > **Acesse o projeto online:** [https://jotapecds.github.io/web-pokedex/](https://jotapecds.github.io/web-pokedex/)
 
+> **Assista ao vídeo de apresentação:** [https://youtu.be/GEmNFa9J4qo](https://youtu.be/GEmNFa9J4qo)
 
 
 
