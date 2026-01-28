@@ -156,7 +156,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import axios from 'axios';
+import api from '../services/api';
 
 const props = defineProps({
   tiposDisponiveis: { type: Array, default: () => [] }
@@ -174,11 +174,6 @@ const itemDefault = {
   codigo_tipo_secundario: null 
 };
 const itemEditado = ref({ ...itemDefault });
-
-// Configuração Base da API
-const api = axios.create({
-  baseURL: 'http://localhost:8080/'
-});
 
 // -- Requisições API --
 const popularPokemons = async () => {

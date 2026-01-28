@@ -44,7 +44,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import api from './services/api';
 
 // Componentes
 import PokeManager from './components/PokeManager.vue';
@@ -56,7 +56,7 @@ const types = ref([]);
 
 const popularTipos = async () => {
   try {
-    const response = await axios.get('http://localhost:8080/tipos');
+    const response = await api.get('/tipos');
     types.value = response.data;
   } catch (error) {
     console.error("Erro ao carregar tipos:", error);

@@ -92,7 +92,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import axios from 'axios';
+import api from '../services/api';
 
 const props = defineProps(['types']);
 
@@ -102,11 +102,6 @@ const emit = defineEmits(['tipos-atualizados']);
 const dialog = ref(false);
 const defaultItem = { codigo: null, nome: '' };
 const editedItem = ref({ ...defaultItem });
-
-// Configura API
-const api = axios.create({
-  baseURL: 'http://localhost:8080/'
-});
 
 // -- Requisições API --
 const salvar = async () => {
